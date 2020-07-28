@@ -58,6 +58,6 @@ app.get('/weather', (req, res) => {
     // })
 })
 
-app.listenp(port, () => {
+app.listen(port, () => {
     console.log('Server is up on port ' + port)
 })
