@@ -1,13 +1,21 @@
 const path = require('path')
 const express = require('express')
 const app = express()
+
+
 const port = process.env.PORT || 3000
-console.log(__dirname)
-console.log(path.join(__dirname, '../public'))
+
+
 app.use(express.static(path.join(__dirname, '../public')))
+// app.set('view engine', 'hbs')
+// app.get('', (res, req) => {
+//     res.render('index')
+//  })
 const geocode = require('./utilitis/geocode')
 const forecast = require('./utilitis/forecast')
-
+console.log('this is working')
+const num = 23
+console.log(num)
 app.get('', (req, res) => {
   res.send('Hello express!')
 })
@@ -27,9 +35,9 @@ res.send({
 })
 })
 
-app.get('/about', (req, res) => {
-    res.send('<h1>Good morning my neighbour</h1>')
-})
+// app.get('/about', (req, res) => {
+//     res.send('<h1>Good morning my neighbour</h1>')
+// })
 app.get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send({
@@ -56,6 +64,12 @@ app.get('/weather', (req, res) => {
     //     age: 21,
     //     adress: req.query.address
     // })
+})
+app.get('/help.html/*', (req, res) => {
+    res.send('Help article not found') 
+ })
+app.get('*', (req, res) => {
+    res.send('My 404 page')
 })
 
 app.listen(port, () => {
