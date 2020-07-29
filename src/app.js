@@ -4,8 +4,8 @@ const app = express()
 
 
 const port = process.env.PORT || 3000
-
-
+const source = path.join(__dirname, '../public')
+console.log(source)
 app.use(express.static(path.join(__dirname, '../public')))
 // app.set('view engine', 'hbs')
 // app.get('', (res, req) => {
